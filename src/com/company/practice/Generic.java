@@ -1,25 +1,27 @@
 package com.company.practice;
 
-import java.awt.*;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Generic <T> {
     private T data;
 
-    public Object getData(){
+    public T getData(){
         return data;
     }
 
-    public void setDate(T d){
+    public void setData(T d){
         data = d;
     }
 
     public static void main(String[] args) {
-        Generic<Integer> generic = new Generic<>();
-        generic.setDate(1);
-        String data = (String) generic.getData(); // 런타임 오류 발생 ClassCastException
-        System.out.println(data);
+        Generic raw = new Generic(); //Raw 타입
+        raw.setData(123); // int 값 삽입
+        String a = (String)raw.getData(); // String 추출시 ClassCastException 발생
 
-        Generic generic1 = new Generic();
-        System.out.println(generic1.getData());
+        List list = new ArrayList<>();
+        list.add(123);
+        String ab = (String) list.get(0);
     }
 }
